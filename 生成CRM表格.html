@@ -680,6 +680,11 @@
     </div>
 
     <script>
+		var youtoken="";
+		$(function(){
+			 youtoken=localStorage.getItem('youtoken');
+			 alert(youtoken)
+		})
         document.addEventListener('DOMContentLoaded', function() {
             // 默认值设置
             const defaultValues = {
@@ -689,7 +694,7 @@
                 productUsed: '电商',
                 customerOwner: '直销',
                 channelName: '税航',
-                token: '[2D30E842D6DF41CC8DAD2D466DF3A6C9]', // 默认token
+                token: localStorage.getItem('youtoken'), // 默认token
                 pageSize: 30 // 默认分页大小
             };
             
@@ -1245,9 +1250,9 @@
             }
             
             // 初始绑定事件
-            document.querySelectorAll('#businessTable tbody tr').forEach(row => {
-                bindRowEvents(row);
-            });
+            // document.querySelectorAll('#businessTable tbody tr').forEach(row => {
+            //     bindRowEvents(row);
+            // });
             
             // 点击模态框外部关闭
             defaultsModal.addEventListener('click', function(e) {
