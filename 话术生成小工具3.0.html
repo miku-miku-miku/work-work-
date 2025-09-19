@@ -28,6 +28,29 @@
     </style>
 		<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 		<script>
+			$(function(){
+				var settings = {
+				   "url": "https://mycst.cn//NEWKP/LOGIN/GetToken?UserName=SHGLY_L&Password1=Aa@123654",
+				   "method": "POST",
+				   "timeout": 0,
+				};
+				
+				$.ajax(settings).done(function (response) {
+					 // 示例：获取后存储为全局变量
+					 window.youtoken = response.ID;
+					 localStorage.setItem("youtoken",youtoken);
+					 console.log(youtoken);
+					  const iframe = document.getElementById('SCCRMBG');
+					     // 保存当前iframe的src地址
+					     const currentSrc = iframe.src;
+					     // 先将src设为空（触发刷新）
+					     iframe.src = 'about:blank';
+					     // 再恢复原地址（带token参数的地址会重新加载）
+					     setTimeout(() => {
+					         iframe.src = currentSrc;
+					     }, 0);
+				});
+			})
 			// 页面加载完成后绑定新按钮事件
 			document.addEventListener('DOMContentLoaded', function() {
 			    // 获取Token按钮（预留位置，你可以在这里添加自己的逻辑）
