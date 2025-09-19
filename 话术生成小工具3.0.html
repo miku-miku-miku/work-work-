@@ -589,7 +589,11 @@
                     isJdTrial = version === 'trial';
                     link = processJdAuthLink(link, isJdTrial);
                 }
-                
+				if (platform === 'tmall'||platform === 'taobao') {
+				    $("#tmsqts").show()
+                }else{
+					$("#tmsqts").hide()
+				}
                 // 生成话术（链接+换行+文字）
                 const platformName = PLATFORMS[platform].name;
                 const scriptText = SCRIPT_TEMPLATES.auth
@@ -808,7 +812,7 @@
 					<!-- 授权话术模块 -->
 					<div id="authTab" class="main-content hidden bg-white rounded-xl shadow-md p-6 mb-6">
 						<h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-							<i class="fa fa-lock text-indigo-500 mr-2"></i>授权话术生成
+							<i class="fa fa-lock text-indigo-500 mr-2"></i>授权话术生成&nbsp;&nbsp;<span id="tmsqts" style="color: red;font-size: 10px;" hidden >*天猫授权需先维护商品</span>
 						</h2>
 
 						<div class="space-y-4">
